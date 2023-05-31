@@ -1,0 +1,57 @@
+version: "3.7"
+
+services:
+    app:
+        container_name: app_clinica
+        build:
+            args:
+                user: clinica
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: laravel-app #laravel9
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - backend_clinica
+
+    nginx:
+        container_name: nginx_clinica
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - 8955:80
+            - 4455:443
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks:
+            - backend_clinica
+
+    mysql:
+        container_name: mysql_clinica
+        image: mysql/mysql-server:8.0
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        ports:
+            - 33060:3306
+        networks:
+            - backend_clinica
+
+    redis:
+        container_name: redis_clinica
+        image: redis:latest
+        networks:
+            - backend_clinica
+
+networks:
+    backend_clinica:
+        driver: bridge
