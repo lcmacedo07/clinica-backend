@@ -20,8 +20,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('reset:accesses')->monthlyOn(1, '00:00');
-        $schedule->command('reset:accesses')->everyMinute();
+        $schedule->command('reset:accesses')->monthlyOn(1, '00:00');
+        // $schedule->command('reset:accesses')->everyMinute();
     }
 
     /**
