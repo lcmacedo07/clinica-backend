@@ -63,5 +63,16 @@ Gerar a key do projeto Laravel
 php artisan key:generate
 ```
 
+Rode as Migrations
+```sh
+php artisan migrate
+```
+
+
+Comando para rodar a cron
+```sh
+php artisan schedule:run
+```
+
 Acesse o projeto
 [http://localhost:8955](http://localhost:8955)
