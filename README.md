@@ -4,29 +4,29 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/lcmacedo07/overdrive
+git clone https://github.com/lcmacedo07/clinica-backend.git
 ```
 
 ```sh
-cd overdrive/
+cd clinica-backend/
 ```
 
 Crie o Arquivo .env
 ```sh
-cd overdrive/
+cd clinica-backend/
 cp .env.example .env
 ```
 
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
-APP_NAME=overdrive
+APP_NAME=clinica-backend
 APP_URL=http://localhost:8955
 
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=overdrive
+DB_DATABASE=clinica-backend
 DB_USERNAME=root
 DB_PASSWORD=root
 
@@ -38,36 +38,24 @@ REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 
-L5_SWAGGER_GENERATE_ALWAYS=true
-```
-
-
 Suba os containers do projeto
 ```sh
 docker-compose up -d
 ```
-
 
 Acessar o container
 ```sh
 docker-compose exec app bash
 ```
 
-
 Instalar as dependências do projeto
 ```sh
 composer install
 ```
 
-
 Gerar a key do projeto Laravel
 ```sh
 php artisan key:generate
-```
-
-Acessar a documentação do Swagger
-```sh
-http://localhost:8955/api/documentation
 ```
 
 Acesse o projeto
