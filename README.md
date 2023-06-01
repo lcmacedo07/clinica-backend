@@ -17,6 +17,10 @@ cd clinica-backend/
 cp .env.example .env
 ```
 
+Acesse o VS Code
+```sh
+code .
+```
 
 Atualize as variáveis de ambiente do arquivo .env
 ```dosini
@@ -37,6 +41,7 @@ SESSION_DRIVER=redis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+
 
 Suba os containers do projeto
 ```sh
